@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
 
+const taskRouter = require("./routes/taskRouter");
+
 const port = 8000;
 
-app.get("/", (req, res) => {
-  res.send("server is working fine ");
-});
+app.use("/api/v1/tasks", taskRouter);
 
 app.listen(port, () => {
   console.log("server is running on port:", port);
