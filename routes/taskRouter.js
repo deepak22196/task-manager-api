@@ -1,6 +1,7 @@
 const express = require("express");
 
 const {
+  populateDB,
   getAllTasks,
   createTask,
   getTask,
@@ -10,6 +11,8 @@ const {
 const { get } = require("mongoose");
 
 const router = express.Router();
+
+router.get("/populateDB", populateDB);
 
 router.get("/", getAllTasks);
 
