@@ -6,9 +6,14 @@ const connectDB = require("./db/connect");
 
 require("dotenv").config();
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
+app.use(express.json());
 app.use("/api/v1/tasks", taskRouter);
+
+app.all("*", (req, res) => {
+  res.status(404).send("no such route exists");
+});
 
 const start = async () => {
   try {
